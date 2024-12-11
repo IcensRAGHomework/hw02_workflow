@@ -16,22 +16,21 @@
 
 ---
 
-### 第一題：使用 CharacterTextSplitter 分割策略讀取 PDF 並解析內容
+### 第一題：熟悉如何從外部文件來源取得內容，並透過文本分割工具進行解析。
 
-* **目的**：熟悉如何從外部文件來源取得內容，並透過文本分割工具進行解析。
-* **背景**：你手邊有一份範例 PDF 文件 **`OpenSourceLicenses.pdf`**，內容是開源碼授權的基本介紹。
+* **說明**：熟悉如何從外部文件來源取得內容，並透過文本分割工具進行解析。
+* **文本**：你手邊有一份範例 PDF 文件 **`OpenSourceLicenses.pdf`**，內容是開源碼授權的基本介紹。
 * **任務**：
-  1. 使用 **PyPDF** 套件讀取 **`OpenSourceLicenses.pdf`** 的文本內容。
-  2. 使用 **CharacterTextSplitter** 將文本以`頁`為單位，分割為多個chunks。
-  3. 請回傳最後一個chunk
+  1. 請實作方法 `hw02_1(pdf_path)` 來完成上述任務。
+  2. 使用 **PyPDF** 套件讀取 **`OpenSourceLicenses.pdf`** 的文本內容。
+  3. 使用 **CharacterTextSplitter** 將文本以`頁`為單位，分割為多個chunks。
 * **提示**：
-  1. 請實作方法 `hw02_1(pdf_path)`，用於完成上述任務。
-  2. 可以用 **split_text** 或是 **split_documents** 得到分割後的chunk。
-  3. 注意 **CharacterTextSplitter** 的配置參數：
-      - 請使用chunk_size=100, chunk_overlap=0
-      - separator可以自行決定如何使用
+  1. 可以用 **split_text** 或是 **split_documents** 得到分割後的chunk。
+  2. 注意 **CharacterTextSplitter** 的配置參數：
+      - chunk_overlap=0
+      - schunk_size, separator 可以用預設值，也可以自行調整
 * **預期輸出**：
-  - 回傳一個包含檔名、頁數跟內文的物件
+  - 請回傳最後一個chunk物件，裡面預期會包含檔名、頁數跟內文
 
 ---
 
