@@ -29,8 +29,8 @@
   1. 請實作方法 `hw02_1(pdf_path)`，用於完成上述任務。
   2. 可以用 **split_text** 或是 **split_documents** 得到分割後的chunk。
   3. 注意 **CharacterTextSplitter** 的配置參數：
-    - 請使用chunk_size=100, chunk_overlap=0
-    - separator可以自行決定如何使用
+      - 請使用chunk_size=100, chunk_overlap=0
+      - separator可以自行決定如何使用
 * **預期輸出**：
   - 回傳一個包含檔名、頁數跟內文的物件
 
