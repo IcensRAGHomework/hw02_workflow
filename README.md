@@ -42,13 +42,14 @@
   1. 使用 **PyPDF** 套件讀取 **`勞動基準法.pdf`** 的文本內容。
   2. 使用 **RecursiveCharacterTextSplitter** 將文本分割為多個chunks。
   3. 請試著將`每一章，每一條`切分成單獨的一個個chunk
-  4. `請回傳得到的chunks數量`，預期會是一個整數物件
 * **提示**：
   1. 請實作方法 `hw02_1(pdf_path)`，用於完成上述任務。
   2. 可以用 **split_text** 或是 **split_documents** 得到分割後的chunk。
   3. 注意 **RecursiveCharacterTextSplitter** 的配置參數：
       - chunk_overlap=0
       - chunk_size, separator 可以自行調整
+* **預期輸出**：
+  - 請回傳得到的`chunks數量`，預期會是一個整數物件
 * **切分範例**：
   - 以第一頁為例，預期會是這樣切分
   - ![Alt text](./chunks_example.png "Optional title")
