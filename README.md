@@ -13,7 +13,6 @@
 * 請於 **`student_assignment.py`** 中，實作其中提供的方法
     * `hw02_1(pdf_path)`
     * `hw02_2(pdf_path)`
-    * `hw02_3(pdf_path)`
 
 ---
 
@@ -36,19 +35,21 @@
 
 ---
 
-### 第二題：改用 RecursiveCharacterTextSplitter 分割策略讀取 PDF 並解析內容
+### 第二題：探索不同文本分割策略對產生的資料切片的差異
 
-* **目的**：探索不同文本分割策略對產生的資料切片的差異。
+* **說明**：在第一題中，我們給的文本剛好適合用一頁一頁來切分，那如果文本內容有跨頁的情況又該怎麼切分比較好呢？
+* **文本**：請使用另外一份範例 PDF 文件 **`勞動基準法.pdf`**，內容是勞基法的相關法條。
 * **任務**：
-  1. 重新設計第一題的文本分割邏輯，改用 **RecursiveCharacterTextSplitter** 將文本分割為段落。
+  1. 使用 **PyPDF** 套件讀取 **`勞動基準法.pdf`** 的文本內容。
+  2. 使用 **RecursiveCharacterTextSplitter** 將文本分割為多個chunks。
+  3. 請試著將`每一章，每一條`切分成單獨的一個個chunk
+  4. `請回傳得到的chunks數量`，預期會是一個整數物件
 * **提示**：
-  - 實作方法 `hw02_2(pdf_path)`。
-  - 使用 **split_text** 方法得到分割後的chunk。
-  - 注意 **RecursiveCharacterTextSplitter** 的配置參數（請使用chunk_size=1000, chunk_overlap=50）。
-* **輸出格式**：
-  - 回傳chunk的數量跟跟chunk list中第一個item的內容
-    ```
-    Number of chunks with RecursiveCharacterTextSplitter: 1803
-    CharacterTextSplitter Chunks:
-    ['United Nations\nHuman Rights\nReport 2021United Nations\nHuman Rights\nReport 2021Credits ....]
-    ```
+  1. 請實作方法 `hw02_1(pdf_path)`，用於完成上述任務。
+  2. 可以用 **split_text** 或是 **split_documents** 得到分割後的chunk。
+  3. 注意 **RecursiveCharacterTextSplitter** 的配置參數：
+      - chunk_overlap=0
+      - chunk_size, separator 可以自行調整
+* **切分範例**：
+  - 以第一頁為例，預期會是這樣切分
+  - ![Alt text](./chunks_example.png "Optional title")
