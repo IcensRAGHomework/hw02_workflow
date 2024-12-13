@@ -73,7 +73,7 @@ jobs:
           test-name: Case1
           command: '.venv/bin/python -m pytest test_assignment.py::test_hw02_1'
           timeout: 15
-          max-score: 50
+          max-score: 1
 
       # Step 6-2: Run tests and calculate score on question 2
       - name: Run tests and calculate score By autograding (test_sub)
@@ -83,7 +83,7 @@ jobs:
           test-name: Case2
           command: '.venv/bin/python -m pytest test_assignment.py::test_hw02_2'
           timeout: 10
-          max-score: 50
+          max-score: 1
 
       - name: Debug Test Results
         run: |
