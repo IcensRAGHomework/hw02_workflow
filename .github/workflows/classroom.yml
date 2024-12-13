@@ -67,7 +67,7 @@ jobs:
 
       # Step 6-1: Run tests and calculate score on question 1
       - name: Run tests and calculate score on question 1
-        id: HW02-Q1
+        id: HW02_Q1
         uses: classroom-resources/autograding-command-grader@v1
         with:
           test-name: Case1
@@ -77,7 +77,7 @@ jobs:
 
       # Step 6-2: Run tests and calculate score on question 2
       - name: Run tests and calculate score on question 2
-        id: HW02-Q2
+        id: HW02_Q2
         uses: classroom-resources/autograding-command-grader@v1
         with:
           test-name: Case2
@@ -87,14 +87,14 @@ jobs:
 
       - name: Debug Test Results
         run: |
-          echo "Result for Case1: ${{ steps.HW02-Q1.outputs.result || 0 }}"
-          echo "Result for Case2: ${{ steps.HW02-Q2.outputs.result || 0 }}"
+          echo "Result for Case1: ${{ steps.HW02_Q1.outputs.result || 0 }}"
+          echo "Result for Case2: ${{ steps.HW02_Q2.outputs.result || 0 }}"
 
       # Step 7: Autograding Reporter
       - name: Autograding Reporter
         uses: classroom-resources/autograding-grading-reporter@v1
         env:
-          PYTESTCASE1_RESULTS: "${{steps.HW02-Q1.outputs.result}}"
-          PYTESTCASE2_RESULTS: "${{steps.HW02-Q2.outputs.result}}"
+          PYTESTCASE1_RESULTS: "${{steps.HW02_Q1.outputs.result}}"
+          PYTESTCASE2_RESULTS: "${{steps.HW02_Q2.outputs.result}}"
         with:
-          runners: HW02-Q1,HW02-Q2
+          runners: HW02_Q1,HW02_Q2
