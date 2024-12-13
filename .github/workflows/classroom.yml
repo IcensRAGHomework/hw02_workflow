@@ -13,7 +13,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.ORG_PAT_TOKEN }}
         run: |
-          git clone https://${{ secrets.ORG_PAT_TOKEN }}@github.com/IcensRAGHomework/assignment-tests-.git temp-tests
+          git clone https://${{ secrets.ORG_PAT_TOKEN }}@github.com/IcensRAGHomework/assignment-tests-hw02.git temp-tests
 
       # Step 1: Cache requirements.txt
       - name: Cache requirements.txt
@@ -64,24 +64,24 @@ jobs:
           .venv/bin/pip freeze || echo "pip freeze failed!"
           echo "Listing .venv directory:"
           ls -la .venv || echo ".venv directory not found!"
-    
-      # Step 6-1: Run tests and calculate score By autograding
+
+      # Step 6-1: Run tests and calculate score on question 1
       - name: Run tests and calculate score By autograding
         id: PytestCase1
         uses: classroom-resources/autograding-command-grader@v1
         with:
           test-name: Case1
-          command: '.venv/bin/python -m pytest test_assignment.py::test_hw01_1'
+          command: '.venv/bin/python -m pytest test_assignment.py::test_hw02_1'
           timeout: 15
           max-score: 50
 
-      # Step 6-2: Run tests and calculate score for `test_sub`
+      # Step 6-2: Run tests and calculate score on question 2
       - name: Run tests and calculate score By autograding (test_sub)
         id: PytestCase2
         uses: classroom-resources/autograding-command-grader@v1
         with:
           test-name: Case2
-          command: '.venv/bin/python -m pytest test_assignment.py::test_hw01_2'
+          command: '.venv/bin/python -m pytest test_assignment.py::test_hw02_2'
           timeout: 10
           max-score: 50
 
@@ -89,7 +89,7 @@ jobs:
         run: |
           echo "Result for Case1: ${{ steps.PytestCase1.outputs.result || 0 }}"
           echo "Result for Case2: ${{ steps.PytestCase2.outputs.result || 0 }}"
-  
+
       # Step 7: Autograding Reporter
       - name: Autograding Reporter
         uses: classroom-resources/autograding-grading-reporter@v1
