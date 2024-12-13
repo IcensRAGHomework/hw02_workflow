@@ -7,7 +7,34 @@ q2_pdf = "勞動基準法.pdf"
 
 
 def hw02_1(q1_pdf):
-    pass
+    loader = PyPDFLoader(q1_pdf)
+    docs = loader.load()
+    pdf_text = ""
+    for doc in docs:
+        pdf_text += doc.page_content
+
+    # Define text splitter
+    char_splitter = CharacterTextSplitter(
+        chunk_overlap=0
+    )
+    # # Split text by splitter
+    char_chunks = char_splitter.split_documents(docs)
+
+    return char_chunks[-1]
 
 def hw02_2(q2_pdf):
-    pass
+    loader = PyPDFLoader(q2_pdf)
+    docs = loader.load()
+    pdf_text = ""
+    for doc in docs:
+        pdf_text += doc.page_content
+
+    # Define text splitters
+    recursive_splitter = RecursiveCharacterTextSplitter(
+        chunk_size=30, chunk_overlap=0, separators=["   第 ", "\n第"]
+    )
+
+    # # Split text by splitter
+    recursive_chunks = recursive_splitter.split_text(pdf_text)
+
+    return len(recursive_chunks)
